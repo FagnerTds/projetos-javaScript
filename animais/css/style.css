@@ -89,6 +89,9 @@ body {
   overflow-y: scroll;
   grid-column: 2;
 }
+.animais-lista li {
+  cursor: pointer;
+}
 .animais-lista::-webkit-scrollbar {
   width: 18px;
 }
@@ -187,6 +190,76 @@ body {
     margin-top: 0px;
   }
   .copy {
-    margin-top: 0px;
+    margin-bottom: 0px;
   }
+}
+/* clicar na iamgem e aparecer a descrição */
+.js [data-tab="content"] section {
+  display: none;
+}
+[data-tab="content"] section.ativo {
+  display: block !important;
+}
+[data-tab="content"] section.ativo.show-rigth {
+  animation: show-rigth 0.5s forwards;
+}
+[data-tab="content"] section.ativo.show-down {
+  animation: show-down 0.5s forwards;
+}
+@keyframes show-rigth {
+  from {
+    opacity: 0;
+    transform: translate3d(-30px, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: matrix3d(0, 0, 0);
+  }
+}
+@keyframes show-down {
+  from {
+    opacity: 0;
+    transform: translate3d(0px, -30px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: matrix3d(0, 0, 0);
+  }
+}
+/* Clicar na pergunta e aparecer a resposta */
+.js [data-animme="accordion"] dd {
+  display: none;
+}
+[data-animme="accordion"] dt {
+  cursor: pointer;
+}
+[data-animme="accordion"] dt::after {
+  content: "⤵";
+  margin-left: 10px;
+}
+[data-animme="accordion"] dt.ativo::after {
+  content: "⤴";
+  margin-left: 10px;
+}
+[data-animme="accordion"] dd.ativo {
+  display: block;
+  animation: slideDown 0.5s forwards;
+}
+@keyframes slideDown {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+/* Animação scroll para as sections */
+.js [data-anime="scroll"] {
+  opacity: 0;
+  transform: translate3d(-30px, 0, 0);
+  transition: 0.3s;
+}
+.js [data-anime="scroll"].ativo {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
 }
